@@ -1,49 +1,43 @@
-const loginBtn = document.getElementById('login-btn');
-const passwordInput = document.getElementById('password');
-const loginScreen = document.getElementById('login-screen');
-const fileScreen = document.getElementById('file-screen');
-const tabs = document.querySelectorAll('.file-tab');
-const pages = document.querySelectorAll('.page');
-const videoModal = document.getElementById('video-modal');
-const closeVideo = document.getElementById('close-video');
-const video = document.getElementById('birthday-video');
+// LOGIN LOGIC
+const loginBtn = document.getElementById("login-btn");
+const passwordInput = document.getElementById("password");
+const errorMsg = document.getElementById("error-msg");
+const loginScreen = document.getElementById("login-screen");
+const fileScreen = document.getElementById("file-screen");
 
-loginBtn.addEventListener('click', () => {
-  const val = passwordInput.value.trim().toLowerCase();
-  if (val === 'dexter') {
-    loginScreen.classList.remove('active');
-    fileScreen.classList.add('active');
+loginBtn.addEventListener("click", () => {
+  if (passwordInput.value.toLowerCase() === "ilovedexter") {
+    loginScreen.style.display = "none";
+    fileScreen.classList.remove("hidden");
   } else {
-    alert('Access Denied: Incorrect password.');
+    errorMsg.textContent = "Access Denied. Incorrect Password.";
   }
 });
 
-// allow Enter key
-passwordInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') loginBtn.click();
-});
+// TAB SWITCHING
+const tabButtons = document.querySelectorAll(".tab-btn");
+const tabContents = document.querySelectorAll(".tab-content");
 
-// flip animations
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = tab.getAttribute('data-file');
-    pages.forEach(p => p.classList.remove('active'));
-    document.getElementById(target).classList.add('active');
-
-    // open video modal if "Video Evidence" tab
-    if (target === 'evidence3') {
-      setTimeout(() => {
-        videoModal.classList.add('active');
-        video.pause();
-        video.currentTime = 0;
-      }, 400);
-    }
+tabButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    tabContents.forEach((content) => content.classList.add("hidden"));
+    document.getElementById(btn.dataset.target).classList.remove("hidden");
   });
 });
 
-// close video modal
-closeVideo.addEventListener('click', () => {
-  videoModal.classList.remove('active');
-  video.pause();
-  video.currentTime = 0;
+// VIDEO OVERLAY
+const playVideoBtn = document.getElementById("play-video-btn");
+const videoOverlay = document.getElementById("video-overlay");
+const closeVideoBtn = document.getElementById("close-video");
+const caseVideo = document.getElementById("case-video");
+
+playVideoBtn.addEventListener("click", () => {
+  videoOverlay.classList.remove("hidden");
+  caseVideo.currentTime = 0;
+  caseVideo.play();
+});
+
+closeVideoBtn.addEventListener("click", () => {
+  caseVideo.pause();
+  videoOverlay.classList.add("hidden");
 });
