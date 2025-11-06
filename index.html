@@ -8,52 +8,63 @@
 </head>
 <body>
   <!-- LOGIN SCREEN -->
-  <div id="login-screen" class="screen active">
+  <div id="login-screen">
     <div class="login-box">
-      <h1>Miami Metro Police Dept.</h1>
-      <p>Restricted Access</p>
-      <input type="password" id="password" placeholder="Enter password" />
+      <h2>MIAMI METRO POLICE DEPARTMENT</h2>
+      <p>Restricted Access • Authorized Personnel Only</p>
+      <input type="password" id="password" placeholder="Enter Password" />
       <button id="login-btn">Access File</button>
+      <p id="error-msg"></p>
     </div>
   </div>
 
-  <!-- CASE FILE INTERFACE -->
-  <div id="file-screen" class="screen">
-    <header>
-      <h2>Case File 001: Subject - Birthday Girl</h2>
-      <p>Status: <span class="confidential">CONFIDENTIAL</span></p>
-    </header>
-
-    <main class="file-content">
-      <div class="sidebar">
-        <img src="https://i.imgur.com/wPpJ7kB.png" alt="Subject Photo" class="subject-photo">
-        <ul>
-          <li data-file="evidence1" class="file-tab">Photo Evidence</li>
-          <li data-file="evidence2" class="file-tab">Witness Notes</li>
-          <li data-file="evidence3" class="file-tab">Confidential Message</li>
-        </ul>
+  <!-- MAIN FILE SCREEN -->
+  <div id="file-screen" class="hidden">
+    <div class="sidebar">
+      <div class="subject-info">
+        <h3>Case File 001</h3>
+        <p>Subject: Birthday Girl</p>
+        <p>Status: CONFIDENTIAL</p>
       </div>
 
-      <div class="pages">
-        <section id="evidence1" class="page">
-          <h3>Photo Evidence</h3>
-          <img src="https://i.imgur.com/mQxkz5f.jpeg" alt="Evidence Photo">
-          <p>Recovered from the scene: Subject seen smiling. Possibly armed with charm.</p>
-        </section>
-
-        <section id="evidence2" class="page">
-          <h3>Witness Notes</h3>
-          <p>"She’s the kind of person who can make even Dexter crack a smile."</p>
-          <p>Filed under: Unusually delightful suspects.</p>
-        </section>
-
-        <section id="evidence3" class="page">
-          <h3>Confidential Message</h3>
-          <p>To Subject 001 — your file is full of good memories, great laughs, and undeniable evidence that you’re awesome.</p>
-          <p><strong>CASE CLOSED:</strong> Happy Birthday 🎉</p>
-        </section>
+      <div class="tabs">
+        <button class="tab-btn" data-target="photo">Photo Evidence</button>
+        <button class="tab-btn" data-target="notes">Witness Notes</button>
+        <button class="tab-btn" data-target="video">Video Evidence</button>
       </div>
-    </main>
+    </div>
+
+    <div class="file-content">
+      <div id="photo" class="tab-content">
+        <h2>Photo Evidence</h2>
+        <p>[Replace with real photos later]</p>
+        <img src="https://placekitten.com/500/300" alt="evidence photo" />
+      </div>
+
+      <div id="notes" class="tab-content hidden">
+        <h2>Witness Notes</h2>
+        <p>
+          [Placeholder notes about Subject 001 — replace with inside jokes or messages later.]
+        </p>
+      </div>
+
+      <div id="video" class="tab-content hidden">
+        <h2>Video Evidence</h2>
+        <p>Click below to review the video evidence.</p>
+        <button id="play-video-btn">Play Video</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN VIDEO OVERLAY -->
+  <div id="video-overlay" class="hidden">
+    <div class="overlay-content">
+      <button id="close-video">✖</button>
+      <video id="case-video" controls>
+        <source src="birthday.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
 
   <script src="script.js"></script>
