@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inconsolata', monospace;
+}
+
+body {
+  background: #d6c3a3;
+  color: #222;
+}
+
+/* --- screens --- */
+.screen {
+  display: none;
+  height: 100vh;
+  width: 100%;
+}
+
+.screen.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- login screen --- */
+#login-screen {
+  background: #111;
+  color: #eee;
+  flex-direction: column;
+}
+
+.login-box {
+  background: rgba(0,0,0,0.6);
+  padding: 2rem 3rem;
+  border: 2px solid #b11;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-box h1 {
+  margin-bottom: 0.5rem;
+  color: #ff3333;
+}
+
+.login-box input {
+  padding: 0.6rem;
+  width: 80%;
+  margin-top: 1rem;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #ff3333;
+  background: transparent;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: #ff3333;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* --- file interface --- */
+#file-screen {
+  flex-direction: column;
+  padding: 1.5rem;
+  background: url('https://i.imgur.com/VaCShvY.jpg');
+  background-size: cover;
+}
+
+header {
+  text-align: center;
+  border-bottom: 2px solid #b11;
+  margin-bottom: 1rem;
+}
+
+.confidential {
+  color: #b11;
+  font-weight: 700;
+}
+
+.file-content {
+  display: flex;
+  gap: 1rem;
+}
+
+.sidebar {
+  width: 25%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border: 1px solid #b11;
+  border-radius: 6px;
+}
+
+.subject-photo {
+  width: 100%;
+  border: 2px solid #b11;
+  margin-bottom: 1rem;
+}
+
+.file-tab {
+  list-style: none;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #b11;
+  background: #f3e8c8;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.file-tab:hover {
+  background: #e0cda3;
+}
+
+.pages {
+  flex: 1;
+  background: rgba(255,255,255,0.9);
+  border-radius: 6px;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f7f2e1;
+  border: 1px solid #b11;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: rotateY(-90deg);
+  transform-origin: left;
+  transition: all 0.7s ease;
+}
+
+.page.active {
+  opacity: 1;
+  transform: rotateY(0);
+  z-index: 2;
+}
+
+.page img {
+  max-width: 100%;
+  border: 2px solid #b11;
+  margin: 0.5rem 0;
+}
