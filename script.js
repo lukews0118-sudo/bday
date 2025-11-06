@@ -10,7 +10,7 @@ const video = document.getElementById('birthday-video');
 
 loginBtn.addEventListener('click', () => {
   const val = passwordInput.value.trim().toLowerCase();
-  if (val === 'ilovedexter') {
+  if (val === 'dexter') {
     loginScreen.classList.remove('active');
     fileScreen.classList.add('active');
   } else {
