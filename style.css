@@ -78,11 +78,6 @@ body {
   font-size: 1.1rem;
 }
 
-.hint {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
 
 /* --- file interface --- */
 #file-screen {
